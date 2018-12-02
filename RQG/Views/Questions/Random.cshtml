@@ -6,13 +6,14 @@
 
 <head>
     <script type="text/javascript">
-
         function toggle(id) {
-            var e = document.getElementById(id);
-            if (e.style.display == 'none')
-                e.style.display = 'block';
-            else
-                e.style.display = 'none';
+            var answer = document.getElementById(id);
+
+            if (answer.style.visibility == 'hidden') {
+                answer.style.visibility = 'visible';
+            } else {
+                answer.style.visibility = 'hidden';
+            }
         }
 
     </script>
@@ -29,10 +30,15 @@
 
 <br />
 
-<p>@Html.ValueForModel(Model.Description) <a href="#" onclick="toggle('answer');">Reveal answer</a></p>
+<p>
+    <b>Question: </b>@Html.ValueForModel(Model.Description) <a href="#" onclick="toggle('answer');">Reveal answer</a>
+</p>
+<p>
+    <b>Category: </b>@Html.ValueForModel(Model.Category)
+</p>
 
 
-<div style="display:none" id="answer">
+<div style="visibility:hidden" id="answer">
     <b>Answer: </b>@Html.ValueForModel(Model.Answer)
 </div>
 
